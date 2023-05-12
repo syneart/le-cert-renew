@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:stable
+    volumes:
+      - webdata-volume:/usr/share/nginx/html
+    ports:
+      - 80:80  # Needed for the ACME HTTP-01 challenge.
+
+  letsencrypt:
+    image: certbot/certbot
+    command: > 
+      certonly --force-renew --webroot -w /tmp -d ${DOMAIN_NAME}
+    depends_on:
+      - nginx
+    volumes:
+      - ${LOCAL_LETSENCRYPT_ROOT_PATH}:/etc/letsencrypt
+      - webdata-volume:/tmp
+
+volumes:
+  webdata-volume:

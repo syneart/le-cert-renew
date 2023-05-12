@@ -1,0 +1,17 @@
+##
+
+#################################
+#                               #
+#      Domain Name Setting      #
+#                               #
+#################################
+
+DOMAIN_NAME=your.domain.name
+
+#################################
+#                               #
+# Local Let's Encrypt Root Path #
+#                               #
+#################################
+
+LOCAL_LETSENCRYPT_ROOT_PATH=/etc/letsencrypt
